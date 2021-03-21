@@ -9,14 +9,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "Region")
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Region {
+public class Localization {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    Integer id;
 
-    private String regionName;
+    private String localizationName;
+    private external.client.AccuWeatherAPIClient.Localization localizationKey;
+    private Double localizationLatitude;
+    private Double localizationLongtitude;
+    private String localizationCountry;
+    private String localizationRegion;
+
+
 }
