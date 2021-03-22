@@ -3,11 +3,11 @@ package external.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+
 
 @Entity(name = "Country")
 @Data
@@ -16,8 +16,19 @@ import javax.persistence.Id;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "country.id")
     private Integer id;
-
     private String countryName;
-    private  Region countryRegion;
+
+ //   @ManyToOne(fetch = FetchType.LAZY)
+//    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+//    @JoinColumn(name = "region.id")
+ @ManyToOne
+@JoinColumn(name = "id", nullable = false)
+ private Region countryRegion;
+
+//    @OneToMany(cascade={CascadeType.ALL})
+//    @JoinColumn(name = "city.id")
+//    private List<City> cities;
+
 }

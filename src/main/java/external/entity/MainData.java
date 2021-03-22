@@ -3,11 +3,9 @@ package external.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "MainData")
 @Data
@@ -16,6 +14,7 @@ import javax.persistence.Id;
 public class MainData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "maindata.id")
     private Integer id;
 
     private Integer temperature;
@@ -23,5 +22,9 @@ public class MainData {
     private Integer humidity;
     private String windDirection;
     private Integer windVelocity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    @JoinColumn(name = "city.id")
     private City city;
 }
