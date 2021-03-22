@@ -72,7 +72,7 @@ public class Menu {
 //        }
 //    }
 
-    public static void displayMenu(){
+    private static void displayMenu(){
         System.out.println("************MENU************");
         System.out.println("1. Dodaj lokalizację do bazy danych");
         System.out.println("2. Wyświetl aktualnie dodane lokalizacje");
@@ -80,9 +80,6 @@ public class Menu {
         System.out.println("4. Wyjdź z aplikacji");
     }
 
-    public static void main(String[] args) {
 
-        userConsole();
-    }
 
 }
