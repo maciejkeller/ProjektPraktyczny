@@ -5,16 +5,19 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/exchange-rates?serverTimezone=UTC</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/projekt_praktyczny?serverTimezone=UTC</property>
+<!--        username i hasło do ewentualnej zmiany-->
         <property name="connection.username">root</property>
         <property name="connection.password">test</property>
         <property name="connection.pool_size">1</property>
-        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="current_session_context_class">thread</property>
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
         <property name="show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+<!--        <property name="hibernate.hbm2ddl.auto">create-drop</property>-->
 
-        <mapping class="pl.sda.external.entity.ExchangeRate" />
-    </session-factory>
+        <mapping class="external.entity.Region" />
+        <mapping class="external.entity.Country" />
+        <mapping class="external.entity.City" />
+        <mapping class="external.entity.MainData" />    </session-factory>
 </hibernate-configuration>
