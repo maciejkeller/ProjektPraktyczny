@@ -3,26 +3,31 @@ package external.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
-import java.util.Set;
 
 @Entity(name = "Region")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Table(name = "Region")
 public class Region {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", table = "Region")
+    private int id;
+
+    @Column(name = "region_name", nullable = false, table = "Region")
     private String regionName;
 
-//    @OneToMany(mappedBy = "countryRegion", fetch = FetchType.LAZY)
-    @OneToMany(mappedBy = "countryRegion", cascade={CascadeType.ALL}, fetch = FetchType.LAZY)
-  //  @JoinColumn(name="country.id")
-    private List<Country> countries;// = new ArrayList<>();
+    //mappedBy = "id" to nazwa kolumny wskazywanej przez klucz obcy
+    @OneToMany(mappedBy = "id")
+
+    private List<Country> countries;
+
 
 }

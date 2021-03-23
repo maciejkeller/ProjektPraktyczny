@@ -3,10 +3,8 @@ package external.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Entity(name = "City")
@@ -15,20 +13,23 @@ import java.util.List;
 @AllArgsConstructor
 public class City {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "city.id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, table = "City")
     private Integer id;
+
+    @Column(name="name", nullable = false, table = "City")
     private String cityName;
 
+    @Column(name="latitude", table = "City")
     private Integer cityLatitude;
+
+    @Column(name="longtitude", nullable = false, table="City")
     private Integer cityLongtitude;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Cascade({org.hibernate.annotations.CascadeType.ALL})
-    @JoinColumn(name = "country.id")
+    @ManyToOne
+    @JoinColumn(name = "country", nullable = false)
     private Country cityCountry;
 
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="maindata.id")
+    @OneToMany(mappedBy = "id")
     private List<MainData> weatherData;
 }
