@@ -3,6 +3,7 @@ package external.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -31,7 +32,7 @@ public class MainData {
     @Column(name = "windVelocity", nullable = false, table = "MainData")
     private Integer windVelocity;
 
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name = "city")
     private City city;
 }

@@ -13,7 +13,6 @@ import java.util.List;
 @Table(name = "Region")
 public class Region {
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", table = "Region")
     private int id;
@@ -23,9 +22,7 @@ public class Region {
 
     //mappedBy = "id" to nazwa kolumny wskazywanej przez klucz obcy
     @OneToMany(mappedBy = "id")
-
     private List<Country> countries;
-
 
 }
 

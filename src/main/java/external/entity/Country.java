@@ -3,10 +3,14 @@ package external.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
 
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "Country")
 @Data
@@ -27,6 +31,5 @@ public class Country {
 
     @OneToMany(mappedBy = "id")
     private List<City> cities;
-
 }
 
