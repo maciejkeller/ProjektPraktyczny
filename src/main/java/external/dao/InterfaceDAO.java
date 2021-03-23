@@ -8,11 +8,7 @@ import java.util.List;
 public interface InterfaceDAO<T> {
 
 
-    T findByName(String name);
-
-    T findById(int i);
-
-    List<T> findAll();
+    T findById(Integer i);
 
     void save(T t);
 
@@ -20,5 +16,7 @@ public interface InterfaceDAO<T> {
 
     void update(T t);
 
+    List<T> findAll();
 
+    List<T> findByName(String name);
 }

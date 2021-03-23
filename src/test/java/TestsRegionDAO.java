@@ -6,8 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import javax.persistence.criteria.CriteriaBuilder;
-
 @Log4j
 public class TestsRegionDAO {
     private static final Logger logger = Logger.getLogger(TestsRegionDAO.class);
@@ -20,44 +18,19 @@ public class TestsRegionDAO {
     }
 
     @Test
-    public void shouldFindByName() {
-        Region regionToBeNotNull = regionDAO.findByName("Australia");
-        //Region regionToBeNull = regionDAO.findByName("Africa");
-
-        Assert.assertEquals("Australia", regionToBeNotNull.getRegionName());
-     // Assert.assertNull(regionToBeNull);
-    }
-
-    @Test
-    public void shouldFindById() {
+    public void shouldRegionFindById(){
         Region region = regionDAO.findById(1);
 
-        Assert.assertEquals(1, region.getId());
+        Assert.assertEquals("North America", region.getRegionName());
     }
 
     @Test
     public void shouldSaveRegion(){
+      //  Region region = new Region( ,"Europe");
 
-        Region region = new Region();
-        region.setRegionName("Europe");
-      // region.setId(3);
-
-        regionDAO.save(region);
-
-        Assert.assertEquals("Europe", regionDAO.findById(4).getRegionName());
-
-    }
-
-    @Test
-    public void shouldDeleteRegion(){
-
-        Region region = new Region();
-        region.setRegionName("Europe");
-        region.setId(7);
-
-        regionDAO.delete(region);
-
-        Assert.assertNull(regionDAO.findById(7));
+//        regionDAO.save(region);
+//
+//        Assert.assertEquals(region, regionDAO.findById(4));
 
     }
 

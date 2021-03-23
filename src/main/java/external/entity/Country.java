@@ -15,20 +15,20 @@ import java.util.List;
 @AllArgsConstructor
 public class Country {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "country.id")
     private Integer id;
-    @Column(name = "country_name", nullable = false, table = "Country")
     private String countryName;
 
-    @ManyToOne
-    @JoinColumn(name = "country_region")
-    //name = "country_region" to kolumna z tabeli country mająca klucz obcy
-    private Region countryRegion;
+ //   @ManyToOne(fetch = FetchType.LAZY)
+//    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+//    @JoinColumn(name = "region.id")
+ @ManyToOne
+@JoinColumn(name = "id", nullable = false)
+ private Region countryRegion;
 
-    @OneToMany(mappedBy = "id")
-    private List<City> cities;
-
-
+//    @OneToMany(cascade={CascadeType.ALL})
+//    @JoinColumn(name = "city.id")
+//    private List<City> cities;
 
 }
