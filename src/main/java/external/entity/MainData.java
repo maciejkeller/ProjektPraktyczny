@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "MainData")
 @Data
@@ -15,13 +12,26 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class MainData {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "temperature", nullable = false, table = "MainData")
     private Integer temperature;
+
+    @Column(name = "pressure", nullable = false, table = "MainData")
     private Integer pressure;
+
+    @Column(name = "humidity", nullable = false, table = "MainData")
     private Integer humidity;
+
+    @Column(name = "windDirection", nullable = false, table = "MainData")
     private String windDirection;
+
+    @Column(name = "windVelocity", nullable = false, table = "MainData")
     private Integer windVelocity;
+
+    @ManyToOne
+    @JoinColumn(name = "city")
     private City city;
 }

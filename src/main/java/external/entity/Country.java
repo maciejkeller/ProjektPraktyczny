@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+
 
 @Entity(name = "Country")
 @Data
@@ -15,9 +14,19 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class Country {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-
+    @Column(name = "country_name", nullable = false, table = "Country")
     private String countryName;
-    private  Region countryRegion;
+
+    @ManyToOne
+    @JoinColumn(name = "country_region")
+    //name = "country_region" to kolumna z tabeli country mająca klucz obcy
+    private Region countryRegion;
+
+    @OneToMany(mappedBy = "id")
+    private List<City> cities;
+
 }
+
