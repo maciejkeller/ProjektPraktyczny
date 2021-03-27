@@ -98,7 +98,7 @@ public class CityDAO implements InterfaceDAO<City> {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            List<City> cityList = (List<City>) session.createQuery("SELECT * FROM City", City.class)
+            List<City> cityList = (List<City>) session.createQuery("FROM City ", City.class)
                     .getResultList();
 
             transaction.commit();

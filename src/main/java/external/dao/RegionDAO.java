@@ -99,7 +99,7 @@ public class RegionDAO implements InterfaceDAO<Region> {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            List<Region> regionList = (List<Region>) session.createQuery("SELECT * FROM Region", Region.class)
+            List<Region> regionList = (List<Region>) session.createQuery("FROM Region ", Region.class)
                     .getResultList();
 
             transaction.commit();

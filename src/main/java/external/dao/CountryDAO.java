@@ -99,7 +99,7 @@ public class CountryDAO implements InterfaceDAO<Country> {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            List<Country> countryList = (List<Country>) session.createQuery("SELECT * FROM Country", Country.class)
+            List<Country> countryList = (List<Country>) session.createQuery("FROM Country ", Country.class)
                     .getResultList();
 
             transaction.commit();
