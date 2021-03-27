@@ -1,4 +1,4 @@
-import external.dao.RegionDAO;
+import external.DAO.RegionDAO;
 import external.entity.Region;
 import lombok.extern.log4j.Log4j;
 import org.apache.log4j.Logger;
@@ -18,19 +18,22 @@ public class TestsRegionDAO {
     }
 
     @Test
-    public void shouldRegionFindById(){
+    public void shouldFindRegionById(){
         Region region = regionDAO.findById(1);
 
-        Assert.assertEquals("North America", region.getRegionName());
+        Assert.assertEquals(region.getRegionName(),"North America");
     }
 
     @Test
     public void shouldSaveRegion(){
-      //  Region region = new Region( ,"Europe");
+        Region region = new Region();
+        region.setRegionName("Europe");
 
-//        regionDAO.save(region);
-//
-//        Assert.assertEquals(region, regionDAO.findById(4));
+        regionDAO.save(region);
+
+        Region savedRegion = regionDAO.findByName("Europe");
+
+        Assert.assertEquals(savedRegion.getRegionName(), "Europe");
 
     }
 

@@ -1,7 +1,7 @@
 package external.DAO;
 
 import external.connection.HibernateUtil;
-import external.entity.Region;
+import external.entity.Country;
 import lombok.extern.log4j.Log4j;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -11,23 +11,24 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 @Log4j
-public class RegionDAO implements InterfaceDAO<Region> {
+public class CountryDAO implements InterfaceDAO<Country> {
 
     private final Logger logger = Logger.getLogger(RegionDAO.class);
 
+
     @Override
-    public Region findById(Integer id) {
+    public Country findById(Integer id) {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            Region region = (Region) session.createQuery("FROM Region WHERE id = :id")
+            Country country = (Country) session.createQuery("FROM Country WHERE id = :id")
                     .setParameter("id", id)
                     .getSingleResult();
 
             transaction.commit();
-            return region;
+            return country;
         } catch (HibernateException hibernateException) {
             if (transaction != null)
                 transaction.rollback();
@@ -39,49 +40,13 @@ public class RegionDAO implements InterfaceDAO<Region> {
     }
 
     @Override
-    public void save(Region region) {
+    public void save(Country country) {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            session.save(region);
-
-            transaction.commit();
-        } catch (HibernateException hibernateException) {
-            if (transaction != null)
-                transaction.rollback();
-
-            logger.error(hibernateException.getMessage(), hibernateException);
-        }
-
-    }
-
-    @Override
-    public void delete(Region region) {
-        Transaction transaction = null;
-
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-
-            session.delete(region);
-
-            transaction.commit();
-        } catch (HibernateException hibernateException) {
-            if (transaction != null)
-                transaction.rollback();
-            logger.error(hibernateException.getMessage(), hibernateException);
-        }
-    }
-
-    @Override
-    public void update(Region region) {
-        Transaction transaction = null;
-
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-
-            session.update(region);
+            session.save(country);
 
             transaction.commit();
         } catch (HibernateException hibernateException) {
@@ -93,17 +58,52 @@ public class RegionDAO implements InterfaceDAO<Region> {
     }
 
     @Override
-    public List<Region> findAll() {
+    public void delete(Country country) {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            List<Region> regionList = (List<Region>) session.createQuery("SELECT * FROM Region", Region.class)
+            session.delete(country);
+
+            transaction.commit();
+        } catch (HibernateException hibernateException) {
+            if (transaction != null)
+                transaction.rollback();
+            logger.error(hibernateException.getMessage(), hibernateException);
+        }
+    }
+
+    @Override
+    public void update(Country country) {
+        Transaction transaction = null;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            session.update(country);
+
+            transaction.commit();
+        } catch (HibernateException hibernateException) {
+            if (transaction != null)
+                transaction.rollback();
+
+            logger.error(hibernateException.getMessage(), hibernateException);
+        }
+    }
+
+    @Override
+    public List<Country> findAll() {
+        Transaction transaction = null;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            List<Country> countryList = (List<Country>) session.createQuery("SELECT * FROM Country", Country.class)
                     .getResultList();
 
             transaction.commit();
-            return regionList;
+            return countryList;
         } catch (HibernateException hibernateException) {
             if (transaction!=null)
                 transaction.rollback();
@@ -114,18 +114,18 @@ public class RegionDAO implements InterfaceDAO<Region> {
     }
 
     @Override
-    public Region findByName(String name) {
+    public Country findByName(String name) {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            Region region = (Region) session.createQuery("FROM Region WHERE name = :name")
+            Country country = (Country) session.createQuery("FROM Country WHERE name = :name")
                     .setParameter("name", name)
                     .getSingleResult();
 
             transaction.commit();
-            return region;
+            return country;
         } catch (HibernateException hibernateException) {
             if (transaction != null)
                 transaction.rollback();

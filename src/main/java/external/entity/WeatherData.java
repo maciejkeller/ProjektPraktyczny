@@ -1,6 +1,7 @@
 package external.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
@@ -9,9 +10,10 @@ import javax.persistence.*;
 
 @Entity(name = "MainData")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MainData {
+public class WeatherData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

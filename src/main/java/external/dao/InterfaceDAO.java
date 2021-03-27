@@ -1,14 +1,11 @@
-package external.dao;
-
-import external.entity.Region;
-import org.apache.log4j.Logger;
+package external.DAO;
 
 import java.util.List;
 
 public interface InterfaceDAO<T> {
 
 
-    T findById(Integer i);
+    T findById(Integer id);
 
     void save(T t);
 
@@ -18,5 +15,5 @@ public interface InterfaceDAO<T> {
 
     List<T> findAll();
 
-    List<T> findByName(String name);
+    T findByName(String name);
 }

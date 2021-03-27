@@ -19,5 +19,5 @@
         <mapping class="external.entity.Region" />
         <mapping class="external.entity.Country" />
         <mapping class="external.entity.City" />
-        <mapping class="external.entity.MainData" />    </session-factory>
+        <mapping class="external.entity.WeatherData" />    </session-factory>
 </hibernate-configuration>

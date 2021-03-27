@@ -1,0 +1,4 @@
+wyszukiwanie lokalizacji
+http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=AWxzPnZxIY4G2Rw4jC32NLLmWqxmFJ16&q=50.0%2C16.0&language=pl-pl
+pogoda dla lokalizacji
+http://dataservice.accuweather.com/forecasts/v1/daily/1day/1379609?apikey=AWxzPnZxIY4G2Rw4jC32NLLmWqxmFJ16&language=pl-pl&details=true&metric=true

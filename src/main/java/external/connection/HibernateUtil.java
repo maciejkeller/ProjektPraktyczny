@@ -1,9 +1,11 @@
 package external.connection;
 
+import lombok.extern.log4j.Log4j;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+@Log4j
 public class HibernateUtil {
 
     private static final Logger logger = Logger.getLogger(HibernateUtil.class);
@@ -30,4 +32,3 @@ public class HibernateUtil {
         getSessionFactory().close();
     }
 }
-
