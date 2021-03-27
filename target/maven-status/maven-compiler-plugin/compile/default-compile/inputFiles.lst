@@ -1,1 +1,15 @@
-C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\WeatherForecastApp.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\entity\Country.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\client\AccuWeatherAPIClient\AccuWeatherAPIClient.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\client\AccuWeatherAPIClient\Localization.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\entity\Region.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\service\WeatherService.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\DAO\CityDAO.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\entity\WeatherData.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\DAO\InterfaceDAO.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\Main.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\DAO\RegionDAO.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\client\AccuWeatherAPIClient\APIWeatherData.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\entity\City.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\view\Menu.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\DAO\CountryDAO.java
+C:\Users\macie\Desktop\KursJAVA\ProjektPraktyczny\src\main\java\external\connection\HibernateUtil.java
