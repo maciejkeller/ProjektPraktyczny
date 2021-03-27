@@ -15,7 +15,7 @@
         </property>
 
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/cinema_hibernate?&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC
+            jdbc:mysql://localhost:3306/projekt_praktyczny?&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC
         </property>
 
         <property name="hibernate.connection.username">

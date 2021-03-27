@@ -120,7 +120,7 @@ public class RegionDAO implements InterfaceDAO<Region> {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            Region region = (Region) session.createQuery("FROM Region WHERE name = :name")
+            Region region = (Region) session.createQuery("FROM Region WHERE region_name = :name")
                     .setParameter("name", name)
                     .getSingleResult();
 

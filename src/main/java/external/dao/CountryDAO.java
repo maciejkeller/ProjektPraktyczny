@@ -120,7 +120,7 @@ public class CountryDAO implements InterfaceDAO<Country> {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            Country country = (Country) session.createQuery("FROM Country WHERE name = :name")
+            Country country = (Country) session.createQuery("FROM Country WHERE country_name = :name")
                     .setParameter("name", name)
                     .getSingleResult();
 
