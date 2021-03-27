@@ -15,7 +15,7 @@ public class AccuWeatherAPIClient {
 
     private final OkHttpClient okHttpClient;
 
-    public Localization generateLocalizationKey(String lat, String lon) {
+    public AccuWeatherLocalization generateLocalizationKey(String lat, String lon) {
 
         Request request = new Request.Builder()
                 .url("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=AWxzPnZxIY4G2Rw4jC32NLLmWqxmFJ16&" +
@@ -28,7 +28,7 @@ public class AccuWeatherAPIClient {
             if (response.isSuccessful()) {
                 String json = response.body().string();
                 Gson gson = getGson();
-                return gson.fromJson(json, Localization.class);
+                return gson.fromJson(json, AccuWeatherLocalization.class);
             }
             return null;
         } catch (IOException e) {
@@ -37,7 +37,7 @@ public class AccuWeatherAPIClient {
         return null;
     }
 
-    public APIWeatherData generateWeatherData(String locationKey) {
+    public APIAccuWeatherData generateWeatherData(String locationKey) {
 
         Request request = new Request.Builder()
                 .url("http://dataservice.accuweather.com/forecasts/v1/daily/1day/" +
@@ -50,7 +50,7 @@ public class AccuWeatherAPIClient {
             if (response.isSuccessful()) {
                 String json = response.body().string();
                 Gson gson = getGson();
-                return gson.fromJson(json, APIWeatherData.class);
+                return gson.fromJson(json, APIAccuWeatherData.class);
             }
             return null;
         } catch (IOException e) {

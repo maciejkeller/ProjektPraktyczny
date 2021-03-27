@@ -3,6 +3,6 @@ package external.client.AccuWeatherAPIClient;
 import lombok.Data;
 
 @Data
-public class Localization {
+public class AccuWeatherLocalization {
     private String key;
 }

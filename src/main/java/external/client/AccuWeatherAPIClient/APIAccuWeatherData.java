@@ -4,8 +4,8 @@ package external.client.AccuWeatherAPIClient;
 import lombok.Data;
 
 @Data
-public class APIWeatherData {
-    private Localization localizationKey;
+public class APIAccuWeatherData {
+    private AccuWeatherLocalization localizationKey;
     private Integer temperature;
     private Integer pressure;
     private Integer humidity;
