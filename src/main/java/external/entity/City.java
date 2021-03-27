@@ -20,13 +20,13 @@ public class City {
     @Column(name = "id", nullable = false, table = "City")
     private Integer id;
 
-    @Column(name="name", nullable = false, table = "City")
+    @Column(name = "name", nullable = false, table = "City")
     private String cityName;
 
-    @Column(name="latitude", table = "City")
+    @Column(name = "latitude", table = "City")
     private Integer cityLatitude;
 
-    @Column(name="longtitude", nullable = false, table="City")
+    @Column(name = "longtitude", nullable = false, table = "City")
     private Integer cityLongtitude;
 
 

@@ -105,7 +105,7 @@ public class RegionDAO implements InterfaceDAO<Region> {
             transaction.commit();
             return regionList;
         } catch (HibernateException hibernateException) {
-            if (transaction!=null)
+            if (transaction != null)
                 transaction.rollback();
 
             logger.error(hibernateException.getMessage(), hibernateException);

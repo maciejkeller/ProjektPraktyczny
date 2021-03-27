@@ -47,13 +47,13 @@ public class AccuWeatherAPIClient {
 
         try {
             Response response = okHttpClient.newCall(request).execute();
-            if (response.isSuccessful()){
+            if (response.isSuccessful()) {
                 String json = response.body().string();
                 Gson gson = getGson();
-                return  gson.fromJson(json, APIWeatherData.class);
+                return gson.fromJson(json, APIWeatherData.class);
             }
             return null;
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;

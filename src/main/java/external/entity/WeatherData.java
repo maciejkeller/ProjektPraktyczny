@@ -34,7 +34,7 @@ public class WeatherData {
     @Column(name = "windVelocity", nullable = false, table = "MainData")
     private Integer windVelocity;
 
-   @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "city")
     private City city;
 }

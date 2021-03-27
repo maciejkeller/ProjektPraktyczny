@@ -104,7 +104,7 @@ public class CityDAO implements InterfaceDAO<City> {
             transaction.commit();
             return cityList;
         } catch (HibernateException hibernateException) {
-            if (transaction!=null)
+            if (transaction != null)
                 transaction.rollback();
 
             logger.error(hibernateException.getMessage(), hibernateException);

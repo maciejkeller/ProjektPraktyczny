@@ -105,7 +105,7 @@ public class CountryDAO implements InterfaceDAO<Country> {
             transaction.commit();
             return countryList;
         } catch (HibernateException hibernateException) {
-            if (transaction!=null)
+            if (transaction != null)
                 transaction.rollback();
 
             logger.error(hibernateException.getMessage(), hibernateException);
