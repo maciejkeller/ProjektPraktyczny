@@ -1,7 +1,7 @@
 package external.dao;
 
 import external.connection.HibernateUtil;
-import external.entity.Region;
+import external.entity.Country;
 import lombok.extern.log4j.Log4j;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -12,49 +12,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j
-public class RegionDAO implements InterfaceDAO<Region> {
-
-    private final Logger logger = Logger.getLogger(RegionDAO.class);
+public class CountryDAO implements InterfaceDAO<Country> {
+    private final Logger logger = Logger.getLogger(CountryDAO.class);
 
 
     @Override
-    public List<Region> findAll() {
+    public List<Country> findAll() {
         Transaction transaction = null;
-        List<Region> regions = new ArrayList<>();
+        List<Country> countries = new ArrayList<>();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
-            regions = session.createQuery("FROM Region").getResultList();
+            countries = session.createQuery("FROM Country").getResultList();
             transaction.commit();
 
             String listOfRegions = "";
-            for (int i = 0; i < regions.size(); i++) {
-                if (i != regions.size() - 1) listOfRegions += regions.get(i).getRegionName() + ", ";
-                else listOfRegions += regions.get(i).getRegionName() + ".";
+            for (int i = 0; i < countries.size(); i++) {
+                if (i != countries.size() - 1) listOfRegions += countries.get(i).getCountryName() + ", ";
+                else listOfRegions += countries.get(i).getCountryName() + ".";
             }
-            logger.info("\nFound all regions\n" + listOfRegions);
+            logger.info("\nFound all countries\n" + listOfRegions);
 
         } catch (HibernateException e) {
             if (transaction != null)
                 transaction.rollback();
             logger.error(e.getMessage(), e);
         }
-        return regions;
+        return countries;
     }
 
     @Override
-    public Region findByName(String name) {
+    public Country findByName(String name) {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            Region region = (Region) session.createQuery("FROM Region WHERE region_name = :name").
+            Country Country = (external.entity.Country) session.createQuery("FROM Country WHERE country_name = :name").
                     setParameter("name", name).getSingleResult();
             transaction.commit();
 
-            logger.info("Found region: " + region.getId() + ". " + region.getRegionName());
-            return region;
+            logger.info("Found Country: " + Country.getId() + ". " + Country.getCountryName());
+            return Country;
 
 
         } catch (HibernateException e) {
@@ -62,47 +61,48 @@ public class RegionDAO implements InterfaceDAO<Region> {
                 transaction.rollback();
             logger.error(e.getMessage(), e);
         } catch (NullPointerException e) {
-            logger.info("No region of this name was found.");
+            logger.info("No Country of this name was found.");
         }
 
         return null;
     }
 
     @Override
-    public Region findById(int id) {
+    public Country findById(int id) {
         Transaction transaction = null;
-        Region region = null;
+        Country Country = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            region = session.get(Region.class, id);
+            Country = session.get(external.entity.Country.class, id);
 
             transaction.commit();
 
-            logger.info("Found region: " + region.getId() + ". " + region.getRegionName());
+            logger.info("Found Country: " + Country.getId() + ". " + Country.getCountryName());
 
         } catch (HibernateException e) {
             if (transaction != null)
                 transaction.rollback();
             logger.error(e.getMessage(), e);
         } catch (NullPointerException e) {
-            logger.info("No region of this id was found.");
+            logger.info("No Country of this id was found.");
         }
 
-        return region;
+        return Country;
     }
 
     @Override
-    public void save(Region region) {
+    public void save(Country Country) {
         Transaction transaction = null;
+
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(region);
+            session.save(Country);
             transaction.commit();
-            logger.info("Saved new region: " + region.getId() + ". " + region.getRegionName());
+            logger.info("Saved new Country: " + Country.getId() + ". " + Country.getCountryName());
         } catch (HibernateException e) {
             if (transaction != null)
                 transaction.rollback();
@@ -111,37 +111,35 @@ public class RegionDAO implements InterfaceDAO<Region> {
 
     }
 
-
-
     @Override
-    public void delete(Region region) {
+    public void delete(Country country) {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            session.createQuery("delete from Region where region_name:=" + region.getRegionName());
+            session.createQuery("delete from country where country_name:=" + country.getCountryName());
             transaction.commit();
-            logger.info("Deleted region: " + region.getId() + ". " + region.getRegionName());
+            logger.info("Deleted Country: " + country.getId() + ". " + country.getCountryName());
         } catch (HibernateException e) {
             if (transaction != null)
                 transaction.rollback();
             logger.error(e.getMessage(), e);
         } catch (IllegalArgumentException e) {
-            logger.info("Such region does not exist.");
+            logger.info("Such Country does not exist.");
         }
 
     }
 
     @Override
-    public void update(Region region) {
+    public void update(Country Country) {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(region);
+            session.update(Country);
             transaction.commit();
-            logger.info("The region was updated.");
+            logger.info("The Country was updated.");
         } catch (HibernateException e) {
             if (transaction != null)
                 transaction.rollback();
@@ -149,6 +147,4 @@ public class RegionDAO implements InterfaceDAO<Region> {
         }
     }
 
-
 }
-
