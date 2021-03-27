@@ -15,13 +15,8 @@ import java.util.Scanner;
 public class AccuWeatherAPIClient {
 
     private final OkHttpClient okHttpClient;
-    private final static Scanner SCANNER = new Scanner(System.in);
 
-    public Localization generateLocalizationKey() {
-        System.out.println("Podaj szerokość geograficzną w formacie CC.CCCCCCC \n C - cyfra");
-        String lat = SCANNER.nextLine();
-        System.out.println("Podaj długość geograficzną w formacie CC.CCCCCCC \n C - cyfra");
-        String lon = SCANNER.nextLine();
+    public Localization generateLocalizationKey(String lat, String lon) {
 
         Request request = new Request.Builder()
                 .url("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=AWxzPnZxIY4G2Rw4jC32NLLmWqxmFJ16&" +
@@ -43,8 +38,8 @@ public class AccuWeatherAPIClient {
         return null;
     }
 
-    public WeatherData generateWeatherData() {
-        String locationKey = generateLocalizationKey().getKey();
+    public WeatherData generateWeatherData(String locationKey) {
+
         Request request = new Request.Builder()
                 .url("http://dataservice.accuweather.com/forecasts/v1/daily/1day/" +
                         locationKey +

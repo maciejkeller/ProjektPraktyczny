@@ -19,9 +19,8 @@ public class Localization {
     Integer id;
 
     private String localizationName;
-    private external.client.AccuWeatherAPIClient.Localization localizationKey;
-    private Double localizationLatitude;
-    private Double localizationLongtitude;
+    private String localizationLatitude;
+    private String localizationLongtitude;
     private String localizationCountry;
     private String localizationRegion;
 
