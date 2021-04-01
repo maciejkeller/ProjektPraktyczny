@@ -2,6 +2,7 @@ package external.DAO;
 
 import external.connection.HibernateUtil;
 import external.entity.City;
+import external.entity.Region;
 import external.entity.WeatherData;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -113,7 +114,24 @@ public class WeatherDataDAO implements InterfaceDAO<WeatherData> {
 
     @Override
     public WeatherData findByName(String name) {
-        //nie mam pomysłu jak napisać tą metodę
+        Transaction transaction = null;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            WeatherData weatherData = (WeatherData) session.createQuery("FROM MainData WHERE city = :name")
+                    .setParameter("name", name)
+                    .getSingleResult();
+
+            transaction.commit();
+            return weatherData;
+        } catch (HibernateException hibernateException) {
+            if (transaction != null)
+                transaction.rollback();
+
+            logger.error(hibernateException.getMessage(), hibernateException);
+        }
+
         return null;
     }
 }
